@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A001 /* FourteenFilmTrainerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001; };
+		A002 /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002; };
+		A003 /* RadiographImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003; };
+		A004 /* CaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B004; };
+		A005 /* PracticeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B005; };
+		A006 /* Slots.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006; };
+		A007 /* Cases.swift in Sources */ = {isa = PBXBuildFile; fileRef = B007; };
+		A008 /* SampleHints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B008; };
+		A009 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009; };
+		A010 /* ModeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B010; };
+		A011 /* CaseSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B011; };
+		A012 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B012; };
+		A013 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B013; };
+		A014 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B014; };
+		A015 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015; };
+		A016 /* HowToUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B016; };
+		A017 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B017; };
+		A018 /* SlotGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B018; };
+		A019 /* RadiographImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B019; };
+		A020 /* ImageTrayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B020; };
+		A021 /* RotationControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B021; };
+		A022 /* ResultSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022; };
+		A023 /* LockBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023; };
+		A024 /* ScoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024; };
+		A025 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B025; };
+		A026 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B026; };
+		A027 /* ShuffleUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027; };
+		A028 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028; };
+		A029 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B029; };
+		A030 /* StoreKitConfig.storekit in Resources */ = {isa = PBXBuildFile; fileRef = B030; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B001 /* FourteenFilmTrainerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourteenFilmTrainerApp.swift; sourceTree = "<group>"; };
+		B002 /* Slot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slot.swift; sourceTree = "<group>"; };
+		B003 /* RadiographImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiographImage.swift; sourceTree = "<group>"; };
+		B004 /* CaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseData.swift; sourceTree = "<group>"; };
+		B005 /* PracticeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeResult.swift; sourceTree = "<group>"; };
+		B006 /* Slots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slots.swift; sourceTree = "<group>"; };
+		B007 /* Cases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cases.swift; sourceTree = "<group>"; };
+		B008 /* SampleHints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHints.swift; sourceTree = "<group>"; };
+		B009 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B010 /* ModeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionView.swift; sourceTree = "<group>"; };
+		B011 /* CaseSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseSelectionView.swift; sourceTree = "<group>"; };
+		B012 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
+		B013 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		B014 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		B015 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		B016 /* HowToUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseView.swift; sourceTree = "<group>"; };
+		B017 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
+		B018 /* SlotGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotGridView.swift; sourceTree = "<group>"; };
+		B019 /* RadiographImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiographImageView.swift; sourceTree = "<group>"; };
+		B020 /* ImageTrayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTrayView.swift; sourceTree = "<group>"; };
+		B021 /* RotationControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationControlsView.swift; sourceTree = "<group>"; };
+		B022 /* ResultSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSummaryView.swift; sourceTree = "<group>"; };
+		B023 /* LockBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockBadgeView.swift; sourceTree = "<group>"; };
+		B024 /* ScoringService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringService.swift; sourceTree = "<group>"; };
+		B025 /* HistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
+		B026 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		B027 /* ShuffleUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuffleUtility.swift; sourceTree = "<group>"; };
+		B028 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
+		B029 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B030 /* StoreKitConfig.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreKitConfig.storekit; sourceTree = "<group>"; };
+		B099 /* FourteenFilmTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FourteenFilmTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		C000 /* root */ = {
+			isa = PBXGroup;
+			children = (
+				C001 /* FourteenFilmTrainer */,
+				C090 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C001 /* FourteenFilmTrainer */ = {
+			isa = PBXGroup;
+			children = (
+				B001 /* FourteenFilmTrainerApp.swift */,
+				C010 /* Models */,
+				C020 /* Data */,
+				C030 /* Views */,
+				C040 /* Components */,
+				C050 /* Services */,
+				C060 /* Utilities */,
+				C070 /* Resources */,
+			);
+			path = FourteenFilmTrainer;
+			sourceTree = "<group>";
+		};
+		C010 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B002 /* Slot.swift */,
+				B003 /* RadiographImage.swift */,
+				B004 /* CaseData.swift */,
+				B005 /* PracticeResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C020 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B006 /* Slots.swift */,
+				B007 /* Cases.swift */,
+				B008 /* SampleHints.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		C030 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B009 /* HomeView.swift */,
+				B010 /* ModeSelectionView.swift */,
+				B011 /* CaseSelectionView.swift */,
+				B012 /* PracticeView.swift */,
+				B013 /* ResultView.swift */,
+				B014 /* HistoryView.swift */,
+				B015 /* ReviewView.swift */,
+				B016 /* HowToUseView.swift */,
+				B017 /* UnlockView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C040 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B018 /* SlotGridView.swift */,
+				B019 /* RadiographImageView.swift */,
+				B020 /* ImageTrayView.swift */,
+				B021 /* RotationControlsView.swift */,
+				B022 /* ResultSummaryView.swift */,
+				B023 /* LockBadgeView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C050 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B024 /* ScoringService.swift */,
+				B025 /* HistoryStore.swift */,
+				B026 /* PurchaseManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C060 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B027 /* ShuffleUtility.swift */,
+				B028 /* TimeFormatter.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C070 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B029 /* Assets.xcassets */,
+				B030 /* StoreKitConfig.storekit */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C090 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B099 /* FourteenFilmTrainer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		T001 /* FourteenFilmTrainer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = XCL001;
+			buildPhases = (
+				PH001 /* Sources */,
+				PH002 /* Resources */,
+				PH003 /* Frameworks */,
+			);
+			buildRules = ();
+			dependencies = ();
+			name = FourteenFilmTrainer;
+			productName = FourteenFilmTrainer;
+			productReference = B099;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		PROJ001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					T001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = XCL000;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = ja;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				ja,
+				en,
+				Base,
+			);
+			mainGroup = C000;
+			productRefGroup = C090;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				T001,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		PH001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A001 /* FourteenFilmTrainerApp.swift in Sources */,
+				A002 /* Slot.swift in Sources */,
+				A003 /* RadiographImage.swift in Sources */,
+				A004 /* CaseData.swift in Sources */,
+				A005 /* PracticeResult.swift in Sources */,
+				A006 /* Slots.swift in Sources */,
+				A007 /* Cases.swift in Sources */,
+				A008 /* SampleHints.swift in Sources */,
+				A009 /* HomeView.swift in Sources */,
+				A010 /* ModeSelectionView.swift in Sources */,
+				A011 /* CaseSelectionView.swift in Sources */,
+				A012 /* PracticeView.swift in Sources */,
+				A013 /* ResultView.swift in Sources */,
+				A014 /* HistoryView.swift in Sources */,
+				A015 /* ReviewView.swift in Sources */,
+				A016 /* HowToUseView.swift in Sources */,
+				A017 /* UnlockView.swift in Sources */,
+				A018 /* SlotGridView.swift in Sources */,
+				A019 /* RadiographImageView.swift in Sources */,
+				A020 /* ImageTrayView.swift in Sources */,
+				A021 /* RotationControlsView.swift in Sources */,
+				A022 /* ResultSummaryView.swift in Sources */,
+				A023 /* LockBadgeView.swift in Sources */,
+				A024 /* ScoringService.swift in Sources */,
+				A025 /* HistoryStore.swift in Sources */,
+				A026 /* PurchaseManager.swift in Sources */,
+				A027 /* ShuffleUtility.swift in Sources */,
+				A028 /* TimeFormatter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		PH002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A029 /* Assets.xcassets in Resources */,
+				A030 /* StoreKitConfig.storekit in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		PH003 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = ();
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		XC001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		XC002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		XC003 /* Debug - Target */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "14枚法配列トレーニング";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.example.fourteenfilm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STOREKIT_CONFIGURATION = FourteenFilmTrainer/Resources/StoreKitConfig.storekit;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		XC004 /* Release - Target */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "14枚法配列トレーニング";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.example.fourteenfilm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		XCL000 /* Build configuration list for PBXProject */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				XC001 /* Debug */,
+				XC002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		XCL001 /* Build configuration list for target */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				XC003 /* Debug */,
+				XC004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = PROJ001;
+}

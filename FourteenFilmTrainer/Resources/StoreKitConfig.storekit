@@ -1,0 +1,29 @@
+{
+  "identifier" : "StoreKitConfig",
+  "nonConsumableProducts" : [
+    {
+      "displayPrice" : "1980",
+      "familySharable" : false,
+      "internalID" : "fullunlock_001",
+      "localizations" : [
+        {
+          "description" : "全顎14枚モード、全10症例、学習履歴、苦手部位復習などの全機能を解除します。",
+          "displayName" : "全機能解除",
+          "locale" : "ja_JP"
+        },
+        {
+          "description" : "Unlock full-mouth 14-image practice, all cases, learning history, and review functions.",
+          "displayName" : "Full Unlock",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "jp.example.fourteenfilm.fullunlock",
+      "referenceName" : "Full Unlock",
+      "type" : "NonConsumable"
+    }
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}
