@@ -55,7 +55,7 @@ struct RadiographImageView: View {
             ZStack {
                 Color(white: 0.85)
                 VStack(spacing: 4) {
-                    Image(systemName: "xray")
+                    Image(systemName: "photo")
                         .font(.title2)
                         .foregroundColor(.gray)
                     Text(placeholderLabel)
