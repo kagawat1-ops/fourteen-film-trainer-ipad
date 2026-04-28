@@ -8,26 +8,22 @@ struct PracticeView: View {
     @EnvironmentObject var historyStore: HistoryStore
     @EnvironmentObject var purchaseManager: PurchaseManager
 
-    // Active slots for this mode
     private var activeSlots: [Slot] { slots(for: mode) }
 
-    // Images filtered for mode
     private var activeImages: [RadiographImage] {
         let slotIds = Set(activeSlots.map(\.id))
         return shuffledImages.filter { slotIds.contains($0.correctSlotId) }
     }
 
     @State private var shuffledImages: [RadiographImage] = []
-    // slotId → imageId
-    @State private var placements: [String: String] = [:]
-    // imageId → current rotation
-    @State private var rotations: [String: Int] = [:]
+    @State private var placements: [String: String] = [:]       // slotId → imageId
+    @State private var rotations: [String: Int] = [:]            // imageId → rotation
     @State private var draggingImageId: String? = nil
+    @State private var selectedImageId: String? = nil            // tap-to-place
     @State private var elapsedSeconds = 0
     @State private var timerRunning = false
     @State private var showResult = false
     @State private var practiceResult: PracticeResult? = nil
-    @State private var showLandscapeAlert = false
 
     @Environment(\.horizontalSizeClass) private var hSizeClass
     @Environment(\.verticalSizeClass) private var vSizeClass
@@ -35,25 +31,38 @@ struct PracticeView: View {
     private var isIPad: Bool { hSizeClass == .regular && vSizeClass == .regular }
     private var isPortraitPhone: Bool { hSizeClass == .compact && vSizeClass == .regular }
 
+    // Unplaced images (shown in tray)
+    private var trayImages: [RadiographImage] {
+        activeImages.filter { !placements.values.contains($0.id) }
+    }
+
     var body: some View {
         Group {
             if mode == .fullArch14 && isPortraitPhone {
-                portraitPhoneFullArchNotice
+                portraitPhoneNotice
             } else {
-                mainContent
+                GeometryReader { geo in
+                    let landscape = geo.size.width > geo.size.height
+                    if landscape || isIPad {
+                        landscapeLayout(geo: geo)
+                    } else {
+                        portraitLayout(geo: geo)
+                    }
+                }
             }
         }
-        .navigationTitle("\(caseData.title) - \(mode.displayName)")
+        .navigationTitle("\(caseData.title) ― \(mode.displayName)")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                timerView
+                timerLabel
             }
         }
         .onAppear {
             shuffledImages = ShuffleUtility.shuffled(caseData.images)
             rotations = [:]
             placements = [:]
+            elapsedSeconds = 0
             timerRunning = true
         }
         .onDisappear { timerRunning = false }
@@ -68,131 +77,144 @@ struct PracticeView: View {
         }
     }
 
-    // MARK: - Main layout
-    private var mainContent: some View {
-        GeometryReader { geo in
-            if geo.size.width > geo.size.height || isIPad {
-                // Landscape / iPad: side-by-side
-                HStack(spacing: 0) {
-                    ScrollView {
-                        SlotGridView(
-                            activeSlots: activeSlots,
-                            placements: $placements,
-                            rotations: $rotations,
-                            draggingImageId: $draggingImageId,
-                            allImages: activeImages,
-                            slotSize: slotSize(geo: geo, landscape: true),
-                            onRotateLeft: rotateLeft,
-                            onRotateRight: rotateRight
-                        )
-                        .padding()
-                    }
-                    .frame(maxWidth: .infinity)
+    // MARK: - Landscape / iPad layout
+    // Left: slot grid  |  Right: vertical tray + action buttons
+    private func landscapeLayout(geo: GeometryProxy) -> some View {
+        let rightPanelWidth: CGFloat = isIPad
+            ? min(geo.size.width * 0.30, 260)
+            : min(geo.size.width * 0.35, 220)
+        let slotSz = slotSize(available: geo.size.width - rightPanelWidth)
 
-                    Divider()
-
-                    VStack {
-                        traySection(imageSize: trayImageSize(geo: geo, landscape: true))
-                        actionButtons
-                    }
-                    .frame(width: min(geo.size.width * 0.32, 280))
-                    .padding(.vertical, 8)
-                }
-            } else {
-                // Portrait phone/iPad
-                VStack(spacing: 0) {
-                    ScrollView {
-                        SlotGridView(
-                            activeSlots: activeSlots,
-                            placements: $placements,
-                            rotations: $rotations,
-                            draggingImageId: $draggingImageId,
-                            allImages: activeImages,
-                            slotSize: slotSize(geo: geo, landscape: false),
-                            onRotateLeft: rotateLeft,
-                            onRotateRight: rotateRight
-                        )
-                        .padding(.horizontal, 8)
-                        .padding(.top, 8)
-                    }
-                    .frame(maxHeight: geo.size.height * 0.6)
-
-                    Divider()
-                    traySection(imageSize: trayImageSize(geo: geo, landscape: false))
-                    actionButtons
-                }
-            }
-        }
-    }
-
-    // MARK: - Tray
-    private func traySection(imageSize: CGFloat) -> some View {
-        let unplacedImages = activeImages.filter { img in
-            !placements.values.contains(img.id)
-        }
-        return VStack(alignment: .leading, spacing: 4) {
-            Text("画像トレイ（\(unplacedImages.count)枚未配置）")
-                .font(.caption).foregroundColor(.secondary)
-                .padding(.horizontal, 12)
-            if unplacedImages.isEmpty {
-                Text("すべて配置済みです")
-                    .font(.caption).foregroundColor(.secondary)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-            } else {
-                ImageTrayView(
-                    images: unplacedImages,
+        return HStack(spacing: 0) {
+            // ── Left: slot grid ──
+            ScrollView {
+                SlotGridView(
+                    activeSlots: activeSlots,
+                    placements: $placements,
                     rotations: $rotations,
                     draggingImageId: $draggingImageId,
+                    selectedImageId: $selectedImageId,
+                    allImages: activeImages,
+                    slotSize: slotSz,
+                    onRotateLeft: rotateLeft,
+                    onRotateRight: rotateRight
+                )
+                .padding()
+            }
+            .frame(maxWidth: .infinity)
+
+            Divider()
+
+            // ── Right: tray + buttons ──
+            VStack(spacing: 0) {
+                // Tray fills remaining height
+                ImageTrayView(
+                    images: trayImages,
+                    rotations: $rotations,
+                    draggingImageId: $draggingImageId,
+                    selectedImageId: $selectedImageId,
                     onRotateLeft: rotateLeft,
                     onRotateRight: rotateRight,
-                    imageSize: imageSize
+                    cardWidth: rightPanelWidth
                 )
-                .frame(height: imageSize + 60)
+                .frame(maxHeight: .infinity)
+
+                Divider()
+
+                // Action buttons pinned at bottom of right panel
+                actionButtons
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 10)
             }
+            .frame(width: rightPanelWidth)
+            .background(Color(white: 0.96))
         }
     }
 
-    // MARK: - Buttons
-    private var actionButtons: some View {
-        HStack(spacing: 16) {
-            Button {
-                placements = [:]
-                rotations = [:]
-                shuffledImages = ShuffleUtility.shuffled(caseData.images)
-                elapsedSeconds = 0
-                timerRunning = true
-            } label: {
-                Label("リセット", systemImage: "arrow.counterclockwise")
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 12)
-                    .background(Color(white: 0.93))
-                    .cornerRadius(10)
+    // MARK: - Portrait layout (iPhone portrait or iPad portrait)
+    private func portraitLayout(geo: GeometryProxy) -> some View {
+        let slotSz = slotSize(available: geo.size.width)
+        let trayHeight = geo.size.height * 0.40
+
+        return VStack(spacing: 0) {
+            // Slot grid
+            ScrollView {
+                SlotGridView(
+                    activeSlots: activeSlots,
+                    placements: $placements,
+                    rotations: $rotations,
+                    draggingImageId: $draggingImageId,
+                    selectedImageId: $selectedImageId,
+                    allImages: activeImages,
+                    slotSize: slotSz,
+                    onRotateLeft: rotateLeft,
+                    onRotateRight: rotateRight
+                )
+                .padding(.horizontal, 8)
+                .padding(.top, 8)
             }
 
-            Button {
-                scoreAndShow()
-            } label: {
-                Label("採点する", systemImage: "checkmark.seal.fill")
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 12)
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-            }
+            Divider()
+
+            // Tray (vertical scroll, capped height)
+            ImageTrayView(
+                images: trayImages,
+                rotations: $rotations,
+                draggingImageId: $draggingImageId,
+                selectedImageId: $selectedImageId,
+                onRotateLeft: rotateLeft,
+                onRotateRight: rotateRight,
+                cardWidth: geo.size.width
+            )
+            .frame(height: trayHeight)
+
+            Divider()
+
+            // Action buttons
+            actionButtons
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 8)
     }
 
-    private var timerView: some View {
+    // MARK: - Subviews
+    private var timerLabel: some View {
         Label(TimeFormatter.format(seconds: elapsedSeconds), systemImage: "timer")
             .font(.headline)
             .monospacedDigit()
     }
 
-    // MARK: - Portrait phone notice for full-arch
-    private var portraitPhoneFullArchNotice: some View {
+    private var actionButtons: some View {
+        HStack(spacing: 10) {
+            Button {
+                placements = [:]
+                rotations = [:]
+                shuffledImages = ShuffleUtility.shuffled(caseData.images)
+                selectedImageId = nil
+                elapsedSeconds = 0
+                timerRunning = true
+            } label: {
+                Label("リセット", systemImage: "arrow.counterclockwise")
+                    .font(.subheadline)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)
+                    .background(Color(white: 0.90))
+                    .cornerRadius(10)
+            }
+
+            Button { scoreAndShow() } label: {
+                Label("採点する", systemImage: "checkmark.seal.fill")
+                    .font(.subheadline).bold()
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
+        }
+    }
+
+    private var portraitPhoneNotice: some View {
         VStack(spacing: 20) {
             Image(systemName: "rotate.right").font(.largeTitle)
             Text("全顎14枚モードは、iPadまたはiPhone横向きでの利用を推奨します。")
@@ -207,6 +229,7 @@ struct PracticeView: View {
     // MARK: - Scoring
     private func scoreAndShow() {
         timerRunning = false
+        selectedImageId = nil
         let placedStates: [String: PlacedImageState] = placements.reduce(into: [:]) { dict, kv in
             let (slotId, imageId) = kv
             dict[slotId] = PlacedImageState(
@@ -245,12 +268,13 @@ struct PracticeView: View {
     }
 
     // MARK: - Size helpers
-    private func slotSize(geo: GeometryProxy, landscape: Bool) -> CGFloat {
-        if isIPad { return landscape ? 110 : 90 }
-        return landscape ? 90 : 80
-    }
-    private func trayImageSize(geo: GeometryProxy, landscape: Bool) -> CGFloat {
-        if isIPad { return 90 }
-        return 70
+    private func slotSize(available width: CGFloat) -> CGFloat {
+        // For full-arch 14: fit 7 slots per row
+        let count: CGFloat = 7
+        let padding: CGFloat = 24
+        let spacing: CGFloat = 8 * (count - 1)
+        let calculated = (width - padding - spacing) / count
+        let minimum: CGFloat = isIPad ? 90 : 72
+        return max(calculated, minimum)
     }
 }
