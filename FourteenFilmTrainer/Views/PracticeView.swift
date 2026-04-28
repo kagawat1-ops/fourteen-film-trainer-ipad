@@ -60,7 +60,7 @@ struct PracticeView: View {
         }
         .onAppear {
             shuffledImages = ShuffleUtility.shuffled(caseData.images)
-            rotations = [:]
+            rotations = makeInitialRotations(for: caseData.images)
             placements = [:]
             elapsedSeconds = 0
             timerRunning = true
@@ -188,8 +188,8 @@ struct PracticeView: View {
         HStack(spacing: 10) {
             Button {
                 placements = [:]
-                rotations = [:]
                 shuffledImages = ShuffleUtility.shuffled(caseData.images)
+                rotations = makeInitialRotations(for: caseData.images)
                 selectedImageId = nil
                 elapsedSeconds = 0
                 timerRunning = true
@@ -265,6 +265,16 @@ struct PracticeView: View {
     }
     private func rotateRight(_ imageId: String) {
         rotations[imageId] = ((rotations[imageId] ?? 0) + 90) % 360
+    }
+
+    // MARK: - Initial rotation randomiser
+    // Each image gets a random angle from [0, 90, 180, 270].
+    // 0° is the registered (correct) orientation; students rotate back to 0 to score.
+    private func makeInitialRotations(for images: [RadiographImage]) -> [String: Int] {
+        let angles = [0, 90, 180, 270]
+        return images.reduce(into: [:]) { dict, img in
+            dict[img.id] = angles.randomElement() ?? 0
+        }
     }
 
     // MARK: - Size helpers

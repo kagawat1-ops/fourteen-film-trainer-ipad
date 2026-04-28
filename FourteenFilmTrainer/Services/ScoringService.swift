@@ -30,7 +30,9 @@ enum ScoringService {
                 )
             }
             let positionCorrect = image.correctSlotId == slotId
-            let rotationCorrect = image.correctRotation == placed.currentRotation
+            // Images are registered in the correct orientation (correctRotation is always 0).
+            // The app randomises initial rotation at session start; 0° is the correct answer.
+            let rotationCorrect = placed.currentRotation == 0
             return SlotResult(
                 slotId: slotId,
                 slotName: slot(for: slotId)?.displayName ?? slotId,
